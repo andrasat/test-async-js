@@ -1,0 +1,14 @@
+{
+  "name": "test-async-js",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "andrasat <andra.satria1@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start": "node index.js"
+  },
+  "devDependencies": {
+    "eslint": "^8.42.0"
+  }
+}
