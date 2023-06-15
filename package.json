@@ -6,9 +6,7 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "start": "node index.js"
-  },
-  "devDependencies": {
-    "eslint": "^8.42.0"
+    "start:node": "node index.js",
+    "start:bun": "bun run index.js"
   }
 }

@@ -7,7 +7,14 @@ function getRandomString() {
   return randomString;
 }
 
-const server = http.createServer(async (req, res) => {
+function immediate(fn) {
+  return new Promise(resolve => setImmediate(() => {
+    fn()
+    resolve()
+  }))
+}
+
+const server = http.createServer( async (req, res) => {
   switch(req.url) {
     case '/': {
       const str = 'Healthy'
@@ -49,11 +56,6 @@ const server = http.createServer(async (req, res) => {
     case '/not-blocking': {
       const hash = crypto.createHash('sha256')
 
-      const immediate = (fn) => new Promise(resolve => setImmediate(() => {
-        fn()
-        resolve()
-      }))
-
       for (let i = 0; i < 1e7; i++) {
         await immediate(() => hash.update(getRandomString()))
       }
@@ -74,16 +76,8 @@ const server = http.createServer(async (req, res) => {
   }
 })
 
-server.on('connection', (socket) => {
-  console.log('New connection...');
-})
-
 server.on('request', (req, res) => {
   process.stdout.write(`${req.method}:${req.url}:${new Date().toISOString()}\n`)
-})
-
-server.on('upgrade', (req, socket, head) => {
-  console.log('Upgrade connection...');
 })
 
 server.listen(3030, () => {
