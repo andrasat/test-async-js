@@ -7,7 +7,8 @@
   "private": true,
   "scripts": {
     "start:node": "node node.js",
-    "start:bun": "bun run bun.js"
+    "start:bun": "bun --watch run bun.js",
+    "start:bun-debug": "DEBUG=true bun-debug --watch run bun.js"
   },
   "devDependencies": {
     "bun-types": "^0.6.9",
