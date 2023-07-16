@@ -43,9 +43,8 @@ Bun.serve({
       }
       case "/not-blocking": {
         const hash = crypto.createHash("sha256")
-        const debugIteration = process.env.DEBUG ? 1e6 : 1e7
 
-        for (let i = 0; i < debugIteration; i++) {
+        for (let i = 0; i < 1e6; i++) {
           await util.runAsyncSetTimeout0(() => hash.update(util.getRandomString()))
         }
 
