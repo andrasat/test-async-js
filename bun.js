@@ -43,9 +43,10 @@ Bun.serve({
       }
       case '/not-blocking': {
         const hash = crypto.createHash('sha256')
+        const debugIteration = process.env.DEBUG ? 1e3 : 1e7
 
-        for (let i = 0; i < 1e7; i++) {
-          await util.runAsync(() => hash.update(util.getRandomString()))
+        for (let i = 0; i < debugIteration; i++) {
+          await util.runAsyncSetTimeout1(() => hash.update(util.getRandomString()))
         }
 
         const data = JSON.stringify({ data: hash.digest('hex') })
