@@ -20,6 +20,11 @@ To run:
 bun start:bun // Bun
 yarn start:node // Node-Yarn
 npm run start:node // Node-NPM
+bun-debug run start:bun-debug // bun-debug
 ```
+
+Note:
+
+- to run with bun-debug, please follow this guide to setup [Bun Development](https://bun.sh/docs/project/development)
 
 This project was created using `bun init` in bun v0.6.9. [Bun](https://bun.sh) is a fast all-in-one JavaScript runtime.
