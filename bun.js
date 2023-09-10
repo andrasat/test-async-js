@@ -1,5 +1,5 @@
-const crypto = require("node:crypto")
-const util = require("./util")
+import crypto from "node:crypto"
+import util from "./util"
 
 Bun.serve({
   port: 3030,
@@ -44,8 +44,8 @@ Bun.serve({
       case "/not-blocking": {
         const hash = crypto.createHash("sha256")
 
-        for (let i = 0; i < 1e6; i++) {
-          await util.runAsyncSetTimeout0(() => hash.update(util.getRandomString()))
+        for (let i = 0; i < 1e7; i++) {
+          await util.runAsyncSetImmediate(() => hash.update(util.getRandomString()))
         }
 
         const data = JSON.stringify({ data: hash.digest("hex") })

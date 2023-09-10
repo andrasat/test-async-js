@@ -1,5 +1,6 @@
 {
   "name": "test-async-js",
+  "type": "module",
   "version": "1.0.0",
   "main": "index.js",
   "author": "andrasat <andra.satria1@gmail.com>",

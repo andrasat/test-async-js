@@ -1,6 +1,6 @@
-const crypto = require("node:crypto")
-const http = require("node:http")
-const util = require("./util")
+import crypto from "node:crypto"
+import http from "node:http"
+import util from "./util.js"
 
 const server = http.createServer(async (req, res) => {
   switch (req.url) {
@@ -45,7 +45,7 @@ const server = http.createServer(async (req, res) => {
       const hash = crypto.createHash("sha256")
 
       for (let i = 0; i < 1e7; i++) {
-        await util.runAsync(() => hash.update(util.getRandomString()))
+        await util.runAsyncSetImmediate(() => hash.update(util.getRandomString()))
       }
 
       const data = { data: hash.digest("hex") }

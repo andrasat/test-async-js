@@ -1,4 +1,4 @@
-const crypto = require("node:crypto")
+import crypto from "node:crypto"
 
 function getRandomString() {
   const stringSize = 20
@@ -33,7 +33,7 @@ function runAsyncSetImmediate(fn) {
   )
 }
 
-module.exports = {
+export default {
   getRandomString,
   runAsyncSetTimeout1,
   runAsyncSetTimeout0,
